@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    <div class="container" >
+        <div class="header" >
+            <h3>Perfect Pizza</h3>
+        </div>
+
+    
+            
+            <div class="content" >
+                <div>
+                    <button @click="alert('Place your order')">Order</button>  
+                </div>
+                <br>
+                <div class="pizza small_pizza">
+                    <h3>Small Pizza</h3>
+                    <img src="C:\Users\Home\Downloads\pizza.png" alt="Trulli" width="100" height="">
+                    <h1>R49.99</h1>
+                    <div>
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                    </div>
+                    <div x-data="{ count: 1 }">
+                        <p x-text="count"></p>
+                        <button @click="count++">Buy</button>
+                    </div>
+                </div>
+
+                <div class="pizza medium ">
+                    <h3>Medium Pizza</h3>
+                    <img src="C:\Users\Home\Downloads\pizza.png" alt="Trulli" width="150" height="">
+                    <h1>R89.50</h1>
+                    <div>
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                    </div>
+                </div>
+
+                <div class="pizza Large">
+                    <h3>Large Pizza</h3>
+                    <img src="C:\Users\Home\Downloads\pizza.png" alt="Trulli" width="200" height="">
+                    <h1>R120.00</h1>
+                    <div>
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                    </div>
+                
+                </div>
+        
+            </div>
+        
+        <div class="footer" >
+        
+
+                <h2>Contact details</h2>
+
+                <div>
+                  contact us at : 0717187709
+                  info@pizza.co.za
+                </div>
+            
+        </div>
+    </div> 
+</body>
+</html>

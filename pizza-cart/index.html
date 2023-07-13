@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="//unpkg.com/alpinejs" defer></script>
-</head>
-<body>
-    <div class="container" >
-        <div class="header" >
-            <h3>Perfect Pizza</h3>
-        </div>
-
+    <!--JS-->
     
+    <!--fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+    <!--Css-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Alpinejs -->
+    
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+</head>
+<body x-data="{ countSmall: 0, countMedium: 0, countLarge: 0 }">
+    <div class="container">
+        <div class="header" >
+            <h3 class="text-center">Perfect Pizza</h3>
+        </div>
             
             <div class="content" >
-                <div>
-                    <button @click="alert('Place your order')">Order</button>  
-                </div>
-                <br>
+                
                 <div class="pizza small_pizza">
                     <h3>Small Pizza</h3>
                     <img src="C:\Users\Home\Downloads\pizza.png" alt="Trulli" width="100" height="">
@@ -27,9 +31,8 @@
                     <div>
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
                     </div>
-                    <div x-data="{ count: 1 }">
-                        <p x-text="count"></p>
-                        <button @click="count++">Buy</button>
+                    <div class="col text-center">
+                        <button class="btn btn-primary btn default" @click="countSmall+=49">Order</button>
                     </div>
                 </div>
 
@@ -40,6 +43,9 @@
                     <div>
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
                     </div>
+                    <div class="col text-center" >
+                        <button class="btn btn-primary btn default" @click="countMedium+=89.50">Order</button>
+                    </div>
                 </div>
 
                 <div class="pizza Large">
@@ -49,10 +55,75 @@
                     <div>
                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
                     </div>
+                    <div class="col text-center" >
+                        <button class="btn btn-primary btn default" @click="countLarge+=120.00">Order</button>
+                    </div>
                 
                 </div>
-        
+                <br/>
+            
             </div>
+            <div class="text-center row col-md-*">
+                <!--wrapper-->
+                <div>
+                   <h1 class="shoppingC text-center">Shopping Cart</h1>
+                   <div >
+                       <label  ><h4>Small</h4></label>:
+                       <button @click="countSmall+=49">++</button>
+                       <button @click="if(countSmall > 0){
+                         countSmall-=49
+                       }">--</button>
+                        <!--innerHtml-->
+                        <label><p x-text="countSmall"></p></label>
+                    </div>
+                 <br/>
+                 <div>
+                    <label> <h4>Medium</h4></label>:
+                    <button @click="countMedium+=89.50">+</button>
+                    <button @click="if(countMedium > 0){
+                     countMedium-=89.50
+                    }">--</button>
+                    <label><p x-text="countMedium"></p></label>
+                 </div>
+                 <br/>
+                 <div>
+                    <label> <h4>Large</h4></label>:
+                    <button @click="countLarge+=120.00">+</button>
+                    <button @click="if (countLarge > 0) {
+                     countLarge-=120.00
+                    }">--</button>
+                    <label><p x-text="countLarge"></p></label><!--innerHtml-->
+                 </div>
+                 <br/>
+                 <div>
+                     <label><h4>Total:</h4></label>
+                     <label><p x-text="countSmall + countMedium + countLarge"></p></label>
+                 </div>
+                 <script>
+                     function Counter() {
+                       return {
+                         
+                       };
+                     }
+               
+                     // ensure that AlpineJS is properly loaded
+                     document.addEventListener('alpine:init', () => {
+                       Alpine.data('counter', Counter);
+                     });
+                 </script>
+                 <div x-data="{ show: false }">
+                    <label x-show="show" >Payment Amount:
+                    <input x-show="show" type="text" id="input" x-ref="input" /></label></br>
+                    <button class="btn btn-info" @click="show = !show; $nextTick(() => { $refs.input.focus(); }); if(input >= countSmall + countMedium + countLarge ){
+                        return 'Enjoy your piza'
+
+                    }">Checkout</button>
+                    
+                 </div>
+                </div>
+                  
+            </div> 
+            
         
         <div class="footer" >
         

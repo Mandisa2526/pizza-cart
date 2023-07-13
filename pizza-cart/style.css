@@ -1,12 +1,21 @@
 body {
-    background-color:#0d1b2a;
+    background-color:#FFBA08;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 
 }
-.header {
-    background-color: #1b263b;
-    padding: 1em;
+.row{
+    background-color: #AE2012;
     border: 2px solid;
+    padding: 1em;
+    margin: 1em; 
+   
+    
+    
+}
+.header {
+    background-color: #EE9B00;
+    padding: 1em;
+   
     margin: 1em; 
 
 }
@@ -15,22 +24,21 @@ body {
 }
 
 .medium {
-    background-color:#415a77 ;
+    background-color:#E9D8A6;
     flex:50;
 }
 .Large {
-    background-color:#315659;
+    background-color:#94D2BD;
     flex: 50;
     
 }
 .small_pizza {
-    background-color:#778da9 ;
+    background-color:#0A9396 ;
     flex: 50;
     
 }
 .footer {
-    background-color: #1b263b;
-    border: 2px solid;
+    background-color: #FAA307;
     padding: 1em;
     margin: 1em; 
     overflow: auto;
@@ -60,5 +68,12 @@ body {
     .content {
         display: flex ;
      }
+    .cart{
+        display: flex;
+    }
+    .checkout{
+        margin: 1em;
+        padding: 1em;
+    }
 
 }

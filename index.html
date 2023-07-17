@@ -16,7 +16,7 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 </head>
-<body x-data="{ countSmall: 0, countMedium: 0, countLarge: 0 }">
+<body x-data="{ countSmall: 0, countMedium: 0, countLarge: 0, showError: false, show: false,showMessage :false }">
     <div class="container">
         <div class="header" >
             <h3 class="text-center">Perfect Pizza</h3>
@@ -99,25 +99,28 @@
                      <label><h4>Total:</h4></label>
                      <label><p x-text="countSmall + countMedium + countLarge"></p></label>
                  </div>
-                 <script>
-                     function Counter() {
-                       return {
-                         
-                       };
-                     }
-               
-                     // ensure that AlpineJS is properly loaded
-                     document.addEventListener('alpine:init', () => {
-                       Alpine.data('counter', Counter);
-                     });
-                 </script>
-                 <div x-data="{ show: false }">
+                 
+                 <p x-show="showError" class="p-3 mb-2 bg-warning text-dark"> Sorry - that is not enough money!</p>
+                 <p x-show="showMessage" class="p-3 mb-2 bg-success text-white">Enjoy your pizza!</p>
+                
+                
+                 <div>
                     <label x-show="show" >Payment Amount:
-                    <input x-show="show" type="text" id="input" x-ref="input" /></label></br>
-                    <button class="btn btn-info" @click="show = !show; $nextTick(() => { $refs.input.focus(); }); if(input >= countSmall + countMedium + countLarge ){
-                        return 'Enjoy your piza'
-
-                    }">Checkout</button>
+                        <input x-show="show" type="text" id="input" x-ref="input" /></br>
+                        <button class="btn btn-info"  @click="if(countSmall + countMedium + countLarge > $refs.input.value ) {
+                             showError = true;
+                             setTimeout(function(){ showError = false}, 2000);
+                             
+                            } else {
+                                showMessage = true;
+                                setTimeout(function(){ showMessage = false}, 2000);
+                                countSmall = 0;
+                                countMedium = 0;
+                                countLarge = 0;
+                            }">Payment</button>
+                    </label>
+                    </br>
+                    <button class="btn btn-info" x-show="countSmall + countMedium + countLarge > 0" @click="show = !show">Checkout</button>
                     
                  </div>
                 </div>
@@ -128,12 +131,12 @@
         <div class="footer" >
         
 
-                <h2>Contact details</h2>
+            <h2>Contact details</h2>
 
-                <div>
-                  contact us at : 0717187709
-                  info@pizza.co.za
-                </div>
+            <div>
+                contact us at : 0717187709
+                info@pizza.co.za
+            </div>
             
         </div>
     </div> 
